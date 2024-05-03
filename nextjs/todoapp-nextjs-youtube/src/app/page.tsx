@@ -1,8 +1,11 @@
 import Image from "next/image";
 import AddTask from "./components/AddTask";
 import Todolist from "./components/TodoList";
+import { getAllTodos } from "./pages/api/api";
 
-export default function Home() {
+export default async function Home() {
+  const todos = await getAllTodos();
+
   return (
     <main className="flex flex-col items-center justify-center min-h-screen py-2 bg-gray-200">
       <h1
@@ -17,7 +20,7 @@ export default function Home() {
         "
         >
           <AddTask />
-          <Todolist />
+          <Todolist todos={todos} />
         </div>
       </div>
     </main>
