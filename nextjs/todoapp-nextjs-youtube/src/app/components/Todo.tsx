@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { Task } from "../pages/api/types";
+import { editTodo } from "../pages/api/api";
 
 interface TodoProps {
   todo: Task;
@@ -16,6 +17,7 @@ const Todo = ({ todo }: TodoProps) => {
   };
 
   const handleSave = async () => {
+    await editTodo(todo.id, editedTaskTitle);
     setIsEditing(false);
   };
 
@@ -29,6 +31,9 @@ const Todo = ({ todo }: TodoProps) => {
           type="text"
           className="mr-2 py-1 px-2 rounded border-gray-400 border"
           value={editedTaskTitle}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+            setEditedTaskTitle(e.target.value)
+          }
         />
       ) : (
         <span>{todo.text}</span>
