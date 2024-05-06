@@ -14,6 +14,10 @@ const Todo = ({ todo }: TodoProps) => {
     setIsEditing(true);
   };
 
+  const handleSave = async () => {
+    setIsEditing(false);
+  };
+
   return (
     <li
       key={todo.id}
@@ -29,9 +33,16 @@ const Todo = ({ todo }: TodoProps) => {
       )}
 
       <div>
-        <button className="text-green-500 mr-3" onClick={handleEdit}>
-          edit
-        </button>
+        {isEditing ? (
+          <button className="text-green-500 mr-3" onClick={handleSave}>
+            save
+          </button>
+        ) : (
+          <button className="text-green-500 mr-3" onClick={handleEdit}>
+            edit
+          </button>
+        )}
+
         <button className="text-red-500">delete</button>
       </div>
     </li>
