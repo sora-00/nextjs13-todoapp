@@ -2,7 +2,7 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import { Task } from "../pages/api/types";
-import { editTodo } from "../pages/api/api";
+import { deleteTodo } from "../pages/api/api";
 
 interface TodoProps {
   todo: Task;
@@ -26,6 +26,10 @@ const Todo = ({ todo }: TodoProps) => {
   const handleSave = async () => {
     await editTodo(todo.id, editedTaskTitle);
     setIsEditing(false);
+  };
+
+  const handleDelete = async () => {
+    await deleteTodo(todo.id);
   };
 
   return (
@@ -58,7 +62,9 @@ const Todo = ({ todo }: TodoProps) => {
           </button>
         )}
 
-        <button className="text-red-500">delete</button>
+        <button className="text-red-500" onClick={handleDelete}>
+          delete
+        </button>
       </div>
     </li>
   );
