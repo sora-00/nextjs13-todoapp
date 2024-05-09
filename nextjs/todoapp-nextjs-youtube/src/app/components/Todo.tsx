@@ -49,7 +49,7 @@ const Todo = ({ todo }: TodoProps) => {
 
       <div>
         {isEditing ? (
-          <button className="text-green-500 mr-3" onClick={handleSave}>
+          <button className="text-blue-500 mr-3" onClick={handleSave}>
             save
           </button>
         ) : (
