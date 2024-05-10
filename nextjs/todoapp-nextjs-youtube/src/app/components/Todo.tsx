@@ -2,6 +2,7 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import { Task } from "../pages/api/types";
+import { editTodo } from "../pages/api/api";
 import { deleteTodo } from "../pages/api/api";
 
 interface TodoProps {
